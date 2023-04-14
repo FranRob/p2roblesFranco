@@ -1,6 +1,11 @@
 console.log("Funciona");
 
 
-const aux = document.getElementById("cajatexto");
 
-console.log(aux);
+function miFuncion(){
+
+    const aux = document.getElementById("cajatexto");
+    alert(aux.value);
+}
+
+
