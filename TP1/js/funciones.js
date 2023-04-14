@@ -8,4 +8,5 @@ function miFuncion(){
     alert(aux.value);
 }
 
-
+//Ejericio para la casa ---------- //
+//Pedir apellido, nombre, edad, boton de enviar//
