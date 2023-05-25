@@ -3,50 +3,76 @@ function getPerson(){
     .then(function(response){
         return response.json()
     })
-    .then(function(data){
-        console.log(data.results)
-    })
-    
+    .then (function(data){
+        let fechaN = (data.results[0].dob.date)
+        let genero = (data.results[0].gender)
+        let name = (data.results[0].name.first)
+        let apellido = (data.results[0].name.last)
+        let localidad = (data.results[0].location.city)
+        let latitud = (data.results[0].location.coordinates.latitude)
+        let longitud = (data.results[0].location.coordinates.longitude)
+        let ciudad = (data.results[0].location.city)
+        let foto = (data.results[0].picture.large)
+     
+        document.getElementById("foto").src = foto;
+        document.getElementById("foto").style.display = "block";
+        document.getElementById("nombre").innerHTML = name;
+        document.getElementById("apellido").innerHTML = apellido;
+        document.getElementById("ciudad").innerHTML = ciudad;
+        document.getElementById("fechaNacimiento").innerHTML = fechaN;
+        document.getElementById("genero").innerHTML = genero;
+        document.getElementById("latitud").innerHTML = latitud;
+        document.getElementById("longitud").innerHTML = longitud;
+        document.getElementById("localidad").innerHTML = localidad;
+        
+    }
+)}
 
+function getCharacter() {
+    const input = document.querySelector('input[type="text"]');
+    const id = Math.floor(Math.random() * 826) + 1;
+
+    fetch(`https://rickandmortyapi.com/api/character/${id}`)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        avatar.src = data.image;
+        let name = (data.name)
+        let status = (data.status)
+        let species = (data.species)
+        let location = (data.location.name)
+        let gender = (data.gender)
+
+        document.getElementById("avatar").style.display = "block";
+        document.getElementById('name').innerHTML = name;
+        document.getElementById('status').innerHTML = status;
+        document.getElementById('species').innerHTML = species;
+        document.getElementById('location').innerHTML = location;
+        document.getElementById('gender').innerHTML = gender;
+
+
+
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
 }
 
+function compareGenders() {
+    const personGender = document.getElementById("genero").innerHTML.toLowerCase();
+    const characterGender = document.getElementById("gender").innerHTML.toLowerCase();
+  
+    if (personGender === characterGender) {
+        const iconTrue = document.getElementById("iconTrue");
+        iconTrue.style.display = "block";
+        const iconFalse = document.getElementById("iconFalse");
+        iconFalse.style.display = "none";
 
-
-
-
-document.addEventListener('DOMContentLoaded', function(){
-
-var map = L.map('map').setView([-69.8246, 134.8719], 13);
-
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
-
-
-
-L.marker([51.5, -0.09]).addTo(map)
-    .bindPopup('Estas Aqui')
-    .openPopup();
-});
-
-
-
-//SEDES//
-// -33.00789,-58.52247 //
-
-
-//Consigna.... desde la api de random user. queremos foto gender, nombre, apellido, fecha de nacimiento, localidad, coordenadas (latitud y longitud)
-//mostrar en mapa con variables dinamicas//
-
-//comparar datos de rick and morty y random user//
-
-//comparar generos y mostrar si son iguales//
-
-
-
-
-//[0].gender    con esto obtenemos el genero//
-//[0].name.first      nombre//
-//[0].name.last       apellido //
-//[0].dob.date         fecha nacimiento//
-//[0].location.city     ciudad//
+      } else {
+        const iconFalse = document.getElementById("iconFalse");
+        iconFalse.style.display = "block";
+        const iconTrue = document.getElementById("iconTrue");
+        iconTrue.style.display = "none";
+    }
+}

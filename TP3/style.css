@@ -1,5 +1,143 @@
-#map { 
-  width: 600px;
-  height: 400px;
-  background-color: #cccccc;
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+  width: 100%;
+  height: 100vh;
+}
+
+
+
+header{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 15%;
+}
+
+
+label{
+  font-weight: 600;
+}
+
+.fila-main{
+  display: flex;
+  justify-content: space-evenly;
+  height: 85vh;
+  max-width: 100%;
+}
+
+.izquierda{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.derecha{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+.derecha div img{
+  width: 125px;
+  height: 125px;
+  display: none;
+}
+
+
+
+
+
+.centro{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.centro .botones{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 60%;
+  height: 200px;
+}
+
+.centro .botones button{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.centro .botones button i{
+  margin-right: 5px;
+}
+
+
+#iconTrue{
+  font-size: 50px;
+  color: #138a13;
+  display: none;
+}
+
+#iconFalse{
+  font-size: 50px;
+  color: #a71a1a;
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*IDS*/
+#contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#consultar{
+    width: 150px;
+    height: 30px;
+    background-color: antiquewhite;
+    border: 50px;
+}
+
+#foto {
+    display: none;
+    margin-top: 10px;
 }
