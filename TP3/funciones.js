@@ -87,21 +87,16 @@ function compareGenders() {
 
 
 function updateMap(latitude, longitude) {
-    // Verificar si el mapa ya está inicializado
     if (!map) {
-      // Inicializar el mapa con la ubicación de la persona
       map = L.map('map').setView([latitude, longitude], 10);
   
-      // Agregar capa de mapa
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; OpenStreetMap contributors',
         maxZoom: 18,
       }).addTo(map);
   
-      // Agregar marcador en la ubicación de la persona
       L.marker([latitude, longitude]).addTo(map);
     } else {
-      // Si el mapa ya está inicializado, actualizar la posición del marcador
       map.setView([latitude, longitude], 10);
       map.eachLayer(function(layer) {
         if (layer instanceof L.Marker) {
