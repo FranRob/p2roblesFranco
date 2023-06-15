@@ -1,37 +1,37 @@
-
 function obtenerDatos(){
+    const ingreso = document.getElementById('entrada');
+    const aide = ingreso.value;
+
     fetch('./resource/asentamientos.json')
     .then(function(response){
         return response.json()
     })
     .then(function(data){
-        const id_provincia = document.getElementById('id_provincia');
-        const aidi = id_provincia.value;
-        const localidades = data.localidades;
-        let nombreProvincia = "no identificada";
-        let cantidadMunicipios = 0;
-        let nombreMunicipio = [];
+        const provincias = (data.localidades);
+        let cantidadDeLocalidades = 0;
+        let nombreDeLocalidades = [];
 
-        localidades.forEach(recorrido => {
-            if (recorrido.provincia.id === aidi){
-                nombreProvincia = recorrido.provincia.nombre;
-                cantidadMunicipios++;
-                nombreMunicipio.push(recorrido.municipio.nombre);
+        provincias.forEach(function(element){
+            let idDeProvincias = element.provincia.id;
+             
+            if (idDeProvincias === aide){
+                let nombreProv = element.provincia.nombre;
+                cantidadDeLocalidades++;
+                nombreDeLocalidades.push(element.nombre);
+                document.getElementById("nombreP").innerHTML = nombreProv;
+                document.getElementById("cantidad").innerHTML = cantidadDeLocalidades;
+                
+            } else {
+                document.getElementById('noEncontrado').innerHTML = 'No encontrado';
             }
-        })
+        });
+        document.getElementById('localidad').innerHTML = nombreDeLocalidades;
+        
 
-    if (nombreProvincia !== "no identificada") {
-        document.getElementById('nombre').innerHTML = ('Provincia: ' + nombreProvincia);
-        document.getElementById('municipio').innerHTML = ('Cantdad de Municipios: ' + cantidadMunicipios);
-        document.getElementById('nombreMunicipio').innerHTML = "Municipios: ";
 
-        nombreMunicipio.forEach(nombre => {
-            document.getElementById('municipios').innerHTML = nombreMunicipio;
-        })
-    } else {
-        document.getElementById('nombre').innerHTML = "ID no identificado";
-        document.getElementById('municipio').innerHTML = "";
-    }
+
+
+
 
     })
 }
