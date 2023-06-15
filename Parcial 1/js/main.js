@@ -10,6 +10,12 @@ function obtenerDatos(){
         const provincias = (data.localidades);
         let cantidadDeLocalidades = 0;
         let nombreDeLocalidades = [];
+        let encontrado = false;
+
+        document.getElementById('nombreP').innerHTML = '';
+        document.getElementById('cantidad').innerHTML = '';
+        document.getElementById('noEncontrado').innerHTML = '';
+        document.getElementById('localidad').innerHTML = '';
 
         provincias.forEach(function(element){
             let idDeProvincias = element.provincia.id;
@@ -20,11 +26,13 @@ function obtenerDatos(){
                 nombreDeLocalidades.push(element.nombre);
                 document.getElementById("nombreP").innerHTML = nombreProv;
                 document.getElementById("cantidad").innerHTML = cantidadDeLocalidades;
+                encontrado = true;
                 
-            } else {
-                document.getElementById('noEncontrado').innerHTML = 'No encontrado';
             }
         });
+        if (!encontrado) {
+            document.getElementById('noEncontrado').innerHTML = 'No encontrado';
+          }
         document.getElementById('localidad').innerHTML = nombreDeLocalidades;
         
 
